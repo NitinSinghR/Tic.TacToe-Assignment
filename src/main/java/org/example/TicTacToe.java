@@ -4,6 +4,11 @@ import java.util.*;
 import java.util.logging.*;
 
 public class TicTacToe {
+    static boolean check(int x, int y, int size){
+        if((x >= 0 && y >= 0) || (x < size && y < size)){
+            return true;
+        }return false;
+    }
     public static void main(String[] args) {
         int x;
         int y;
@@ -26,7 +31,7 @@ public class TicTacToe {
                 l.info("Enter the position Player 1");
                 x = sc.nextInt();
                 y = sc.nextInt();
-                if ((x >= 0 && y >= 0) || (x < size && y < size)) {
+                if (check(x,y,size)) {
                      g.set(x, y, "X");
                 }
 
@@ -41,7 +46,7 @@ public class TicTacToe {
                 l.info("Enter the position Player 2");
                 x = sc.nextInt();
                 y = sc.nextInt();
-                if ((x >= 0 && y >= 0) || (x < size && y < size)) {
+                if (check(x,y,size)) {
                      g1.set(x, y, "O");
                 }
 
