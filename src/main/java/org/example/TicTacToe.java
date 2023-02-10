@@ -5,9 +5,7 @@ import java.util.logging.*;
 
 public class TicTacToe {
     static boolean check(int x, int y, int size){
-        if((x >= 0 && y >= 0) || (x < size && y < size)){
-            return true;
-        }return false;
+        return (x >= 0 && y >= 0) || (x < size && y < size);
     }
     public static void main(String[] args) {
         int x;
