@@ -3,11 +3,10 @@ package org.example;
 import java.util.*;
 import java.util.logging.*;
 
-public class Main {
+public class TicTacToe {
     public static void main(String[] args) {
         int x;
         int y;
-        boolean ch = true;
 
         Logger l = Logger.getLogger("com.api.jar");
         Scanner sc = new Scanner(System.in);
@@ -27,20 +26,14 @@ public class Main {
                 x = sc.nextInt();
                 y = sc.nextInt();
                 if ((x >= 0 && y >= 0) || (x < size && y < size)) {
-                    ch = g.set(x, y, "X");
-                }
-                while (!ch) {
-                        l.info("Enter the position Player 1");
-                        x = sc.nextInt();
-                        y = sc.nextInt();
-                        if ((x >= 0 && y >= 0) || (x < size && y < size)) {
-                            ch = g.set(x, y, "X");
-                        }
+                     g.set(x, y, "X");
+                }else{
+                    l.info("Enter valid input");
                 }
 
                 g.printBoard(size);
 
-                if(Objects.equals(g.win(g.board, size), "X")){
+                if(g.win(g.board, size).equals("X")){
                   l.info("Player 1 wins");
                   stop=0;
                   break;
@@ -50,29 +43,18 @@ public class Main {
                 x = sc.nextInt();
                 y = sc.nextInt();
                 if ((x >= 0 && y >= 0) || (x < size && y < size)) {
-                    ch = g1.set(x, y, "O");
-                }else {
-                    while (!ch) {
-                        l.info("Enter the position Player 2");
-                        x = sc.nextInt();
-                        y = sc.nextInt();
-                        if ((x >= 0 && y >= 0) || (x < size && y < size)) {
-                            ch = g1.set(x, y, "O");
-                        }
-                    }
-
+                     g1.set(x, y, "O");
                 }
 
                 g.printBoard(size);
 
-                if(Objects.equals(g.win(g.board, size), "O")){
+                if(g.win(g.board, size).equals("O")){
                     l.info("Player 2 wins");
                     stop=0;
 
-                }else if(Objects.equals(g.tie(size), "tie")){
+                }else if(g.tie(size).equals("tie")){
                     l.info("Match Draw");
                     stop=0;
-
                 }
         }
     }
@@ -92,16 +74,9 @@ class Game {
         }
     }
 
-    boolean set(int a, int b, String c) {
+    void set(int a, int b, String c) {
         if (board[a][b].equals("-")) {
             board[a][b] = c;
-            return true;
-        } else if (!board[a][b].equals(c)) {
-            l.info("Already Placed\nEnter a valid position\n");
-            return false;
-        } else {
-            l.info("You already entered your coin there");
-            return false;
         }
     }
 
