@@ -8,15 +8,20 @@ public class Main {
         int x;
         int y;
         boolean ch = true;
+
         Logger l = Logger.getLogger("com.api.jar");
         Scanner sc = new Scanner(System.in);
+
         l.info("Enter the dimensions");
         int size = sc.nextInt();
+
         Game g = new Game(size);
         Game g1= g;
+
         l.info("Board");
         g.printBoard(size);
         int stop=1;
+
         while (stop==1) {
                 l.info("Enter the position Player 1");
                 x = sc.nextInt();
@@ -32,12 +37,15 @@ public class Main {
                             ch = g.set(x, y, "X");
                         }
                 }
+
                 g.printBoard(size);
+
                 if(Objects.equals(g.win(g.board, size), "X")){
                   l.info("Player 1 wins");
                   stop=0;
                   break;
                 }
+
                 l.info("Enter the position Player 2");
                 x = sc.nextInt();
                 y = sc.nextInt();
@@ -54,6 +62,7 @@ public class Main {
                     }
 
                 }
+
                 g.printBoard(size);
 
                 if(Objects.equals(g.win(g.board, size), "O")){
@@ -65,7 +74,7 @@ public class Main {
                     stop=0;
 
                 }
-            }
+        }
     }
 }
 class Game {
