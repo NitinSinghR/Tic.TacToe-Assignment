@@ -27,8 +27,6 @@ public class TicTacToe {
                 y = sc.nextInt();
                 if ((x >= 0 && y >= 0) || (x < size && y < size)) {
                      g.set(x, y, "X");
-                }else{
-                    l.info("Enter valid input");
                 }
 
                 g.printBoard(size);
