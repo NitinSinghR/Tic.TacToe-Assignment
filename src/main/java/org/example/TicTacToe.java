@@ -20,6 +20,7 @@ public class TicTacToe {
         l.info("Board");
         g.printBoard(size);
         int stop=1;
+        String t=g.tie(size);
 
         while (stop==1) {
                 l.info("Enter the position Player 1");
@@ -50,7 +51,8 @@ public class TicTacToe {
                     l.info("Player 2 wins");
                     stop=0;
 
-                }else if(g.tie(size).equals("tie")){
+                }
+                if(t.equals("tie")){
                     l.info("Match Draw");
                     stop=0;
                 }
@@ -99,7 +101,7 @@ class Game {
         if (count == 0) {
             return "tie";
         }
-        return "notTie";
+        return "NotTie";
     }
 
     String win(String[][] board, int size) {
